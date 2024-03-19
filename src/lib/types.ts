@@ -10,3 +10,8 @@ export interface Product {
 		count: 120,
 	},
 }
+
+export interface CartItem {
+	product: Product,
+	quantity: number,
+}

@@ -4,9 +4,10 @@ import ProductCard from "./components/product-card.tsx";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button } from "@nextui-org/react";
 import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 import { useGlobalContext } from "./global-context.tsx";
+import CartDrawer from "./components/cart-drawer.tsx";
 
 function App() {
-  const { setDrawerOpen } = useGlobalContext()
+  const { setDrawerOpen, cartItems } = useGlobalContext()
   const { data: products, error, isLoading } = useProducts()
 
   if (error)
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <>
+      <CartDrawer />
       <Navbar shouldHideOnScroll>
         <NavbarBrand className="gap-2">
           <ShoppingCartIcon className="h-6 w-6 text-black" />
@@ -23,8 +25,8 @@ function App() {
         </NavbarBrand>
         <NavbarContent justify="end">
           <NavbarItem className="font-medium">
-            <Button className="text-white" as={Link} color="success" startContent={<ShoppingCartIcon className="h-6 w-6 text-white" />} onClick={() => setDrawerOpen(true)}>
-              Cart
+            <Button className="text-white font-bold" as={Link} color="success" startContent={<ShoppingCartIcon className="h-6 w-6 text-white" />} onClick={() => setDrawerOpen(true)}>
+              Cart { cartItems.length ? ` (${cartItems.length})` : "" }
             </Button>
           </NavbarItem>
         </NavbarContent>
