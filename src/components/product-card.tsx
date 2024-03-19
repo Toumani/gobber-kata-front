@@ -28,10 +28,10 @@ export default function ProductCard({ product }: ProductCardProps) {
 			])
 			toast.success("Added to cart")
 		}
-	}, [isInCart, product])
+	}, [isInCart, product, setCartItems])
 
 	return (
-		<Card shadow="sm" isPressable onPress={() => console.log("item pressed")}>
+		<Card shadow="sm" onPress={() => console.log("item pressed")}>
 			<CardHeader className="flex-col items-start">
 				<b className="text-2xl text-left">{ product.title }</b>
 				<p className="uppercase font-light text-default-500">{ product.category }</p>
