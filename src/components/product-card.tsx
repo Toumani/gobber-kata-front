@@ -1,5 +1,6 @@
 import { Product } from "../lib/types.ts";
-import { Card, CardBody, CardFooter, CardHeader, Image } from "@nextui-org/react";
+import { Button, Card, CardBody, CardFooter, CardHeader, Image } from "@nextui-org/react";
+import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 interface ProductCardProps {
 	product: Product,
@@ -22,8 +23,12 @@ export default function ProductCard({ product }: ProductCardProps) {
 					src={product.image}
 				/>
 			</CardBody>
-			<CardFooter className="flex-col text-small items-end justify-between">
+			<CardFooter className="flex-col text-small items-end justify-between gap-2">
 				<p className="text-xl font-light text-default-800">{ `$${product.price}` }</p>
+				<Button
+					color="primary"
+					startContent={<ShoppingCartIcon className="h-6 w-6 text-white" />}
+				>Add to cart</Button>
 			</CardFooter>
 		</Card>
 	)
